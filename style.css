@@ -1,0 +1,33 @@
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Helvetica,Arial;line-height:1.5;background:#f6f7fb;color:#222}
+.container{max-width:980px;margin:24px auto;padding:0 16px}
+header{text-align:center;margin-bottom:16px}
+h1{margin:8px 0 4px;font-size:28px}
+.card{background:#fff;border-radius:16px;padding:16px 16px;margin:12px 0;box-shadow:0 4px 20px rgba(0,0,0,.05)}
+.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.row.end{justify-content:flex-end}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-group input,.form-group select,.form-group textarea{padding:10px 12px;border:1px solid #dcdcdc;border-radius:10px;font-size:14px;background:#fff}
+.form-group textarea{min-height:70px;resize:vertical}
+.req{color:#c00;font-weight:700;margin-left:4px}
+.btn{padding:10px 14px;border:0;border-radius:10px;cursor:pointer;background:#e9ecf5}
+.btn.primary{background:#246bfb;color:#fff}
+.btn.success{background:#20a566;color:#fff}
+.btn.danger{background:#e74c3c;color:#fff}
+.btn.ghost{background:#f0f1f6}
+.hint{font-size:12px;color:#666;margin-top:6px}
+.badge{padding:6px 10px;border-radius:999px;background:#ffe1e1;color:#b10000;font-size:12px}
+.badge.paid{background:#e6ffed;color:#067d3c}
+.scrollbox{border:1px solid #e2e2e2;border-radius:10px;padding:12px;height:160px;overflow:auto;background:#fcfcfe;white-space:pre-wrap}
+.checkbox{display:flex;gap:8px;align-items:center;margin-top:8px}
+.member-item,.doc-item{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr auto;gap:8px;margin-top:8px}
+.member-item input[type="file"]{padding:8px}
+.member-item .remove,.doc-item .remove{justify-self:end}
+.doc-item{grid-template-columns:1fr 1fr 1fr auto}
+.doc-help{margin-top:10px}
+.doc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+footer{margin:24px 0;text-align:center;color:#888}
+@media (max-width:680px){
+  .member-item{grid-template-columns:1fr}
+  .doc-item{grid-template-columns:1fr}
+}

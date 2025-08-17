@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CGMMA Official Registration Form</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>CGMMA অফিসিয়াল রেজিস্ট্রেশন ফর্ম</h1>
+      <p>Section 8 Non-Governmental Company – Govt. Regd. under MCA/MSME/NGO DARPAN</p>
+    </header>
+
+    <!-- Form Type Toggle -->
+    <section class="card">
+      <h2>📌 ফর্মের ধরন (Form Type)</h2>
+      <div class="row">
+        <label><input type="radio" name="formType" value="family" checked> সদস্যপদ / Family Service Card </label>
+        <label><input type="radio" name="formType" value="trainee"> Practice cum Trainee Worker </label>
+      </div>
+    </section>
+
+    <form id="cgmmaForm">
+      <!-- Common: Personal Information -->
+      <section class="card">
+        <h2>1) ব্যক্তিগত তথ্য (Personal Information)</h2>
+        <div class="grid-2">
+          <div class="form-group">
+            <label></br>নাম / Name <span class="req">*</span></label>
+            <input type="text" id="fullName" required>
+          </div>
+          <div class="form-group">
+            <label></br>পিতার/স্বামীর নাম / Father’s/Husband’s Name <span class="req">*</span></label>
+            <input type="text" id="fatherName" required>
+          </div>
+          <div class="form-group">
+            <label></br>মাতার নাম / Mother’s Name</label>
+            <input type="text" id="motherName">
+          </div>
+          <div class="form-group">
+            <label></br>জন্ম তারিখ / Date of Birth (DD/MM/YYYY) <span class="req">*</span></label>
+            <input type="text" id="dob" placeholder="DD/MM/YYYY" required>
+          </div>
+          <div class="form-group">
+            <label>লিঙ্গ / Gender <span class="req">*</span></label>
+            <select id="gender" required>
+              <option value="">Select</option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>আধার নম্বর / Aadhaar No.</label>
+            <input type="text" id="aadhaar">
+          </div>
+          <div class="form-group">
+            <label>শ্রেণী / Category</label>
+            <select id="category">
+              <option value="">Select</option>
+              <option>General</option>
+              <option>OBC</option>
+              <option>SC</option>
+              <option>ST</option>
+              <option>Minority</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- Common: Contact Details -->
+      <section class="card">
+        <h2>2) যোগাযোগের তথ্য (Contact Details)</h2>
+        <div class="grid-2">
+          <div class="form-group">
+            <label>মোবাইল নম্বর / Mobile <span class="req">*</span></label>
+            <input type="tel" id="mobile" required>
+          </div>
+          <div class="form-group">
+            <label>ইমেল / Email</label>
+            <input type="email" id="email">
+          </div>
+          <div class="form-group">
+            <label>বর্তমান ঠিকানা / Present Address <span class="req">*</span></label>
+            <textarea id="presentAddress" required></textarea>
+          </div>
+          <div class="form-group">
+            <label>স্থায়ী ঠিকানা / Permanent Address</label>
+            <textarea id="permanentAddress"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- Common: Sponsor / Reference -->
+      <section class="card">
+        <h2>Reference / Sponsor</h2>
+        <div class="form-group">
+          <label>রেফারেন্স / স্পন্সর আইডি (Reference/Sponsor ID) <span class="req">*</span></label>
+          <input type="text" id="sponsorId" required placeholder="e.g., CGMMA-REF-12345">
+        </div>
+      </section>
+
+      <!-- Family Service Card Specific -->
+      <section id="familySection" class="card">
+        <h2>Family Service Card Specific</h2>
+        <div class="form-group">
+          <label>Family Photo (Must) <span class="req">*</span></label>
+          <input type="file" id="familyPhoto" accept="image/*">
+        </div>
+
+        <div class="form-group">
+          <label>Family Members (Max 6) — নাম, আধার নম্বর, সমস্যা, Aadhaar Upload (Must)</label>
+          <div id="membersWrap"></div>
+          <button type="button" id="addMemberBtn" class="btn">+ Add Member</button>
+          <p class="hint">সর্বোচ্চ ৬ জন পর্যন্ত যোগ করতে পারবেন।</p>
+        </div>
+      </section>
+
+      <!-- Trainee Specific -->
+      <section id="traineeSection" class="card" style="display:none;">
+        <h2>Practice cum Trainee Worker Specific</h2>
+        <div class="grid-2">
+          <div class="form-group">
+            <label>Passport Size Photo (Must) <span class="req">*</span></label>
+            <input type="file" id="passportPhoto" accept="image/*">
+          </div>
+          <div class="form-group">
+            <label>Bio Data Upload (Must) <span class="req">*</span></label>
+            <input type="file" id="bioDataFile" accept=".pdf,.doc,.docx,.jpg,.png">
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="form-group">
+            <label>সর্বোচ্চ শিক্ষাগত যোগ্যতা / Highest Education</label>
+            <input type="text" id="highestEdu">
+          </div>
+          <div class="form-group">
+            <label>বর্তমান পেশা / Present Occupation</label>
+            <input type="text" id="presentOccupation">
+          </div>
+        </div>
+      </section>
+
+      <!-- Documents Upload -->
+      <section class="card">
+        <h2>8) ডকুমেন্ট (Documents to Upload)</h2>
+        <p class="hint">প্রতিটি রো-তে এক ক্যাটাগরি থেকে একটি ডকুমেন্ট আপলোড করুন। অন্য ক্যাটাগরির জন্য “+ Add Document” দিন।</p>
+        <div id="docsWrap"></div>
+        <button type="button" id="addDocBtn" class="btn">+ Add Document</button>
+
+        <details class="doc-help">
+          <summary>Available Categories & Documents (tap to view)</summary>
+          <div class="doc-grid">
+            <div>
+              <h4>🆔 Identity</h4>
+              <ul>
+                <li>Aadhaar Card</li><li>Voter ID / EPIC</li><li>PAN Card</li>
+                <li>Passport</li><li>Driving License</li><li>Employee ID</li>
+              </ul>
+            </div>
+            <div>
+              <h4>🏠 Address</h4>
+              <ul>
+                <li>Ration Card</li><li>Electricity/Gas/Water Bill</li><li>Bank Passbook/Statement</li>
+                <li>Telephone Bill</li><li>Passport</li><li>Aadhaar Card</li>
+              </ul>
+            </div>
+            <div>
+              <h4>🎓 Education</h4>
+              <ul>
+                <li>Birth Certificate</li><li>School Leaving Cert</li><li>School/College Cert</li>
+                <li>Marksheet</li><li>Training Cert</li><li>Diploma/Degree Cert</li>
+              </ul>
+            </div>
+            <div>
+              <h4>💼 Occupation</h4>
+              <ul>
+                <li>Employment Card</li><li>Experience Certificate</li><li>Trade License</li><li>Company/Service ID</li>
+              </ul>
+            </div>
+            <div>
+              <h4>🏦 Financial</h4>
+              <ul>
+                <li>PAN Card</li><li>Bank Passbook</li><li>Cheque Book</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+      </section>
+
+      <!-- Declarations -->
+      <section class="card">
+        <h2>📝 Declaration (ঘোষণা) & Terms & Conditions (শর্তাবলী)</h2>
+
+        <!-- Family Declaration -->
+        <div id="familyDeclBlock">
+          <h3>(A) Family Service Card Registration</h3>
+          <div class="scrollbox" id="familyDeclBox"></div>
+          <label class="checkbox">
+            <input type="checkbox" id="familyAgree" disabled>
+            <span>আমি/ I Agree (Family)</span>
+          </label>
+        </div>
+
+        <!-- Trainee Declaration -->
+        <div id="traineeDeclBlock" style="display:none;">
+          <h3>(B) Practice cum Trainee Workers</h3>
+          <div class="scrollbox" id="traineeDeclBox"></div>
+          <label class="checkbox">
+            <input type="checkbox" id="traineeAgree" disabled>
+            <span>আমি/ I Agree (Trainee)</span>
+          </label>
+        </div>
+      </section>
+
+      <!-- Payment & Submit -->
+      <section class="card">
+        <h2>💳 Payment & Submit</h2>
+        <div class="row">
+          <button type="button" id="payBtn" class="btn primary">Pay Now (Razorpay Test)</button>
+          <span id="payStatus" class="badge">UNPAID</span>
+        </div>
+        <div class="row end">
+          <button type="submit" id="submitBtn" class="btn success" disabled>Submit</button>
+        </div>
+        <p class="hint">পেমেন্ট সফল + declaration agree না হলে Submit হবে না।</p>
+      </section>
+    </form>
+
+    <footer>
+      <small>© CGMMA</small>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
